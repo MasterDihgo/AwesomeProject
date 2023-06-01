@@ -2,10 +2,14 @@
 import React from 'react'
 import { Alert, Text, View, TouchableOpacity } from 'react-native'
 
-const Main = () => {
+const Main = ({navigation}) => {
 
     const botao = () => {
-        Alert.alert('Socorro');
+      navigation.reset({
+        index: 0,
+        key: null,
+        routes: [{name: 'SignIn'}]
+    })
     }
   
     return (
