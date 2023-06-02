@@ -1,17 +1,24 @@
 import React, {useState} from 'react'
-import { Text, View, TextInput, KeyboardAvoidingView, StyleSheet, TouchableOpacity } from 'react-native'
+import { Alert, Text, View, TextInput, KeyboardAvoidingView, StyleSheet, TouchableOpacity } from 'react-native'
 
 const SignIn = ({navigation}) => {
   const [email, setEmail] = useState('');
   console.log('email', email);
 
+  const [senha, setSenha] = useState('');
 
   const onSubmit = () => {
-    navigation.reset({
-        index: 0,
-        key: null,
-        routes: [{name: 'Main'}]
-    })
+   /* if (senha == 'sorvete') {
+        navigation.reset({
+            index: 0,
+            key: null,
+            routes: [{name: 'Main'}]
+        })
+    } else {
+        Alert.alert('Erouuu');
+    }*/
+
+    (senha == '') ? navigation.navigate('Main') : Alert.alert('funciona assim também')   
   }
 
   const onCadastrar = () => {
@@ -36,6 +43,20 @@ const SignIn = ({navigation}) => {
             value={email}
             onChangeText={text => {
                 setEmail(text);
+            }}
+        />
+
+<TextInput
+            style={styles.input}
+            placeholder='Insira a seha'
+            placeholderTextColor={'#555459'} //carbon
+           // keyboardType=''
+           secureTextEntry
+            autoCapitalize='none'
+            autoCorrect={false}
+            value={senha}
+            onChangeText={text => {
+                setSenha(text);
             }}
         />
 
