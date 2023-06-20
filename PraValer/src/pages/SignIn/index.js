@@ -18,6 +18,14 @@ const SignIn = ({navigation}) => {
         Alert.alert('Erouuu');
     }*/
 
+    let data = {};
+
+     data = {
+        senha: senha,
+    };
+
+    console.log('data', data); // Este vê o log (no console) do campo "senha"
+
     (senha == '') ? navigation.navigate('Main') : Alert.alert('funciona assim também')   
   }
 

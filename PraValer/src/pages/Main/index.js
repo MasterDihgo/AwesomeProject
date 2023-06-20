@@ -12,6 +12,8 @@ const Main = ({navigation}) => {
     })
     }
 
+
+
 const DATA= [
     {
       id: '1',
@@ -29,6 +31,9 @@ const DATA= [
       quantidade: 5,
     },
   ] // OBJETO JSON
+
+
+console.log('DATA',DATA) // Este vê o log (no console) do JSON
   
     return (
       <View>
