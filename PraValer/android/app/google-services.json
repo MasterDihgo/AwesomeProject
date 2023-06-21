@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "54743679057",
+    "project_id": "awesomepravaler",
+    "storage_bucket": "awesomepravaler.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:54743679057:android:1c732bb389772ecd98f870",
+        "android_client_info": {
+          "package_name": "com.pravaler"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "54743679057-7ee24p67oh5orpn527lj0tpji165lals.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9kwS5Wmj-9NdlxJRtvr4UYDRBH6jOrsg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "54743679057-7ee24p67oh5orpn527lj0tpji165lals.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
