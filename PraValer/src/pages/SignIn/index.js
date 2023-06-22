@@ -30,11 +30,7 @@ const SignIn = ({navigation}) => {
   }
 
   const onCadastrar = () => {
-    navigation.reset({
-        index: 0,
-        key: null,
-        routes: [{name: 'SignUp'}]
-    })
+  navigation.navigate('SignUp');
   }
   
     return (

@@ -3,7 +3,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 
-export const setUserAuth = async () => {
+export const setUserAuth = async (uid) => {
     await AsyncStorage.setItem('userAuth', uid);
 };
 
@@ -17,6 +17,7 @@ export const cleanUserAuth = async () => {
 };
 
 export const signUp = async (data) => {
+    console.log('service signup data', data);
     const {email, password, name} = data;
     try {
         const userInfos = await auth().createUserWithEmailAndPassword(
@@ -34,10 +35,10 @@ export const signUp = async (data) => {
             email: email,
             password: password,
         })
-        return {registrerSuccess: true}
+        return {registerSuccess: true}
     } catch (e) {
         Alert.alert('Erro ao cadastrar usuário', e.message);
-        return {registrerSuccess: false}
+        return {registerSuccess: false}
     }
 }
 
