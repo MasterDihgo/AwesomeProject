@@ -43,6 +43,7 @@ export const signUp = async (data) => {
 }
 
 export const signIn = async (data) => {
+    console.log('sign in service data', data);
     const {email, password} = data;
 
     try {
@@ -50,6 +51,8 @@ export const signIn = async (data) => {
             email,
             password,
         );
+
+        console.log('userInfos', userInfos);
 
         setUserAuth(userInfos.user.uid);
 
