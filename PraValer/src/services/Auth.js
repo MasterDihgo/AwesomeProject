@@ -42,15 +42,25 @@ export const signUp = async (data) => {
     }
 }
 
-export const signIn = async (data) => {
+export function signIn(email,password){
+    const userInfos = auth().signInUserWithEmailAndPassword(email,password)
+     console.log('userInfos', userInfos);
+     setUserAuth(userInfos.user.uid);
+
+     return {loginSuccess: true};
+}
+
+/*export function signIn  (data) => {
     console.log('sign in service data', data);
     const {email, password} = data;
 
     try {
-        const userInfos = await auth().signInWithEmailAndPassword(
+
+        
+        const userInfos = auth().signInUserWithEmailAndPassword(
             email,
             password,
-        );
+        )
 
         console.log('userInfos', userInfos);
 
@@ -62,4 +72,4 @@ export const signIn = async (data) => {
         console.log('signIn :: e: ', JSON.stringify(e.message));
         return {loginSuccess: false}
     }
-}
+} */

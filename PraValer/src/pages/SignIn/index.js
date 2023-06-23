@@ -21,11 +21,13 @@ const SignIn = ({navigation}) => {
     }
   }
 
-  const onSubmit = async () => {
+  const onSubmit = async () => { 
    const {loginSuccess} = await login({
     email,
     password,
-   })
+   }
+   
+   )
 
     
   
@@ -70,7 +72,8 @@ const SignIn = ({navigation}) => {
 
         <TouchableOpacity
         onPress={() =>
-            isValid() && onSubmit()
+            //isValid && 
+            onSubmit()
         }
         style={styles.button}
         >
