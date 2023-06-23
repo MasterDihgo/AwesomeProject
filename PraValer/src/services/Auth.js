@@ -42,10 +42,11 @@ export const signUp = async (data) => {
     }
 }
 
-export function signIn(email,password){
-    const userInfos = auth().signInUserWithEmailAndPassword(email,password)
+export function signIn(data){
+    const {email, password} = data;
+    const userInfos = auth().signInWithEmailAndPassword(email,password)
      console.log('userInfos', userInfos);
-     setUserAuth(userInfos.user.uid);
+     //setUserAuth(userInfos.user.uid);
 
      return {loginSuccess: true};
 }
