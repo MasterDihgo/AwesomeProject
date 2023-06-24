@@ -2,6 +2,8 @@
 import React from 'react'
 import {StyleSheet, Text, View, TouchableOpacity, FlatList } from 'react-native'
 
+import FormItem from '../../components/FormItem'
+
 const Main = ({navigation}) => {
 
     const botao = () => {
@@ -36,6 +38,11 @@ const DATA= [
 console.log('DATA',DATA) // Este vê o log (no console) do JSON
   
     return (
+      <>
+
+     <View>
+      <FormItem />
+     </View>
       <View>
 
 <FlatList
@@ -57,6 +64,7 @@ console.log('DATA',DATA) // Este vê o log (no console) do JSON
         <Text> textInComponent </Text>
         </TouchableOpacity >
       </View>
+      </>
     )
   
 }

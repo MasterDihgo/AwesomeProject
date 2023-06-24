@@ -9,6 +9,7 @@ const SignIn = ({navigation}) => {
   console.log('email', email);
 
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const isValid = () => {
     if (email === '' || email === null ||
@@ -22,17 +23,27 @@ const SignIn = ({navigation}) => {
   }
 
   const onSubmit = async () => { 
-   const {loginSuccess} = await login({
-    email,
-    password,
-   }
-   
-   )
+    if(loading === false) {
+        setLoading(true);
+        const {loginSuccess} = await login({
+            email,
+            password,
+           })
 
-    
+    if(loginSuccess === true) {
+        navigation.reset({
+            index: 0,
+            key: null,
+            routes: [{name: 'Main'}]
+        })
+    } else {
+        setLoading(false);
+    }
+   
+}
   
 
-    (loginSuccess) ? navigation.navigate('Main') : Alert.alert('e-mail e senha incorretos, por favor tente novamente')   
+      
   }
 
   const onCadastrar = () => {
@@ -71,13 +82,16 @@ const SignIn = ({navigation}) => {
         />
 
         <TouchableOpacity
-        onPress={() =>
-            //isValid && 
-            onSubmit()
+        onPress={() => {
+
+            isValid() && 
+            onSubmit();
+        }
+            
         }
         style={styles.button}
         >
-            <Text>Entrar</Text>
+            <Text>{loading? 'Carregando...' : 'Entrar'}</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
