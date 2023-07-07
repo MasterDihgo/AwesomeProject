@@ -1,10 +1,15 @@
  import React,{useState} from 'react'
 import { Text, View, TextInput, StyleSheet } from 'react-native'
 
-const FormItem = () => {
-const [quantidade, setQuantidade] = useState('');
-const [descricao, setDescricao] = useState('');
-const [preco, setPreco] = useState('');
+const FormItem = ({
+  quantidade,
+  setQuantidade,
+  descricao,
+  setDescricao,
+  preco,
+  setPreco,
+}) => {
+
 
     return (
       <View style={styles.container}>

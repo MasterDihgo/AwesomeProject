@@ -1,10 +1,27 @@
 
-import React from 'react'
+import React, {useState} from 'react'
 import {StyleSheet, Text, View, TouchableOpacity, FlatList } from 'react-native'
 
 import FormItem from '../../components/FormItem'
 
+import useEntries from '../../hooks/useEntries'
+
 const Main = ({navigation}) => {
+
+const [addEntry] = useEntries();
+
+const [quantidade, setQuantidade] = useState('');
+const [descricao, setDescricao] = useState('');
+const [preco, setPreco] = useState('');
+
+onSave = () => {
+  const data = {
+    preco: preco,
+    quantidade: quantidade,
+    descricao: descricao,
+  };
+  addEntry(data);
+}
 
     const botao = () => {
       navigation.reset({
@@ -16,7 +33,7 @@ const Main = ({navigation}) => {
 
 
 
-const DATA= [
+const DATA= [ //DATA = OBJETO
     {
       id: '1',
       titulo: 'Feijão',
@@ -41,7 +58,17 @@ console.log('DATA',DATA) // Este vê o log (no console) do JSON
       <>
 
      <View>
-      <FormItem />
+      <FormItem 
+      quantidade={quantidade}
+      setQuantidade={setQuantidade}
+
+      descricao={descricao}
+      setDescricao={setDescricao}
+
+      preco={preco}
+      setPreco={setPreco}
+      />
+
      </View>
       <View>
 
@@ -59,10 +86,21 @@ console.log('DATA',DATA) // Este vê o log (no console) do JSON
         
         />
 
+        <View style={styles.containerBotoes}>
+
+        <TouchableOpacity
+        style={styles.salvar}
+        onPress={() => {onSave()}} >
+        <Text> Salvar</Text>
+        </TouchableOpacity >
+
         <TouchableOpacity
         onPress={() => {botao()}} >
-        <Text> textInComponent </Text>
+        <Text> Sair</Text>
         </TouchableOpacity >
+        </View>
+
+       
       </View>
       </>
     )
@@ -83,6 +121,17 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 32,
   },
+
+  containerBotoes: {
+    flexDirection: 'row',
+  },
+  salvar: {
+   borderRadius: 150,
+   borderWidth: 1,
+   borderColor:'#2ecc71', //verde
+   paddingVertical: 10,
+   paddingHorizontal: 20,
+  }
 });
 
 export default Main;
