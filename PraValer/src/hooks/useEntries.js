@@ -2,11 +2,13 @@ import {useState, useCallback} from 'react';
 import { useFocusEffect } from '@react-navigation/native';
 
 import {
+
+    getEntries,
     addEntry
 } from '../services/Entries';
 
-const useEntries = () => {
-   /* const [entries, setEntries] = useState([]);
+const useEntries = () => { 
+    const [entries, setEntries] = useState([]);
 
     useFocusEffect(
         useCallback(() => {
@@ -16,9 +18,9 @@ const useEntries = () => {
             };
             loadEntries();
         },[]),
-    ); */
+    ); 
 
-    return [addEntry];
+    return [entries, addEntry];
 };
 
 export default useEntries;

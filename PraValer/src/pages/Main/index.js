@@ -8,7 +8,9 @@ import useEntries from '../../hooks/useEntries'
 
 const Main = ({navigation}) => {
 
-const [addEntry] = useEntries();
+const [entries, addEntry] = useEntries();
+
+console.log('main entries', entries);
 
 const [quantidade, setQuantidade] = useState('');
 const [descricao, setDescricao] = useState('');
@@ -73,14 +75,14 @@ console.log('DATA',DATA) // Este vê o log (no console) do JSON
       <View>
 
 <FlatList
-        data={DATA}
+        data={entries}
         keyExtractor={item => item.id}
 
         //renderItem={({item}) => <Item title={item.titulo} />}
 
         renderItem={({item}) => (
           <View style={styles.container}>
-            <Text style={styles.item}>Item: {item.titulo} - Quantidade: {item.quantidade}</Text>
+            <Text style={styles.item}>Item: {item.descricao} - Quantidade: {item.quantidade}</Text>
             </View>
         )}
         
@@ -95,6 +97,7 @@ console.log('DATA',DATA) // Este vê o log (no console) do JSON
         </TouchableOpacity >
 
         <TouchableOpacity
+        style={styles.sair}
         onPress={() => {botao()}} >
         <Text> Sair</Text>
         </TouchableOpacity >
@@ -131,6 +134,9 @@ const styles = StyleSheet.create({
    borderColor:'#2ecc71', //verde
    paddingVertical: 10,
    paddingHorizontal: 20,
+  },
+  sair: {
+    paddingVertical: 10,
   }
 });
 
