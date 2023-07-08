@@ -8,21 +8,39 @@ import useEntries from '../../hooks/useEntries'
 
 const Main = ({navigation}) => {
 
-const [entries, addEntry] = useEntries();
+const [entries, addEntry, updateEntry] = useEntries();
 
-console.log('main entries', entries);
+// console.log('main entries', entries);
 
 const [quantidade, setQuantidade] = useState('');
 const [descricao, setDescricao] = useState('');
 const [preco, setPreco] = useState('');
+const [id, setId] = useState('');
 
-onSave = () => {
+const [isEdit, setIsEdit] = useState(false);
+
+onSave = (item) => {
+  console.log('item', item);
   const data = {
     preco: preco,
     quantidade: quantidade,
     descricao: descricao,
   };
-  addEntry(data);
+
+
+  const dataUp = {
+    preco: item.preco,
+    quantidade: item.quantidade,
+    descricao: item.descricao,
+    id: item.id,
+  }
+  console.log('dataup', dataUp);
+
+  //{isEdit  ? () => updateEntry(dataUp) && setIsEdit(false) : () => addEntry(data);}
+
+  setQuantidade('');
+  setDescricao('');
+  setPreco('');
 }
 
     const botao = () => {
@@ -54,7 +72,7 @@ const DATA= [ //DATA = OBJETO
   ] // OBJETO JSON
 
 
-console.log('DATA',DATA) // Este vê o log (no console) do JSON
+// console.log('DATA',DATA) // Este vê o log (no console) do JSON
   
     return (
       <>
@@ -82,7 +100,22 @@ console.log('DATA',DATA) // Este vê o log (no console) do JSON
 
         renderItem={({item}) => (
           <View style={styles.container}>
-            <Text style={styles.item}>Item: {item.descricao} - Quantidade: {item.quantidade}</Text>
+            <TouchableOpacity
+            onPress={() => {
+              setQuantidade(item.quantidade);
+              console.log('item.quantidade', item.quantidade, 'quantidade', quantidade); 
+              setDescricao(item.descricao);
+              setPreco(item.preco);
+              setId(item.id);
+              setIsEdit(true);
+
+              onSave(item);
+
+            }}
+            >
+            <Text style={styles.item}> Quantidade: {item.quantidade} - Item: {item.descricao} - Preço: {item.preco}</Text>
+            </TouchableOpacity>
+            
             </View>
         )}
         
@@ -93,7 +126,7 @@ console.log('DATA',DATA) // Este vê o log (no console) do JSON
         <TouchableOpacity
         style={styles.salvar}
         onPress={() => {onSave()}} >
-        <Text> Salvar</Text>
+        <Text>{isEdit ? `Atualizar` : `Salvar`}</Text>
         </TouchableOpacity >
 
         <TouchableOpacity

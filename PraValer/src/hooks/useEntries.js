@@ -4,7 +4,8 @@ import { useFocusEffect } from '@react-navigation/native';
 import {
 
     getEntries,
-    addEntry
+    addEntry,
+    updateEntry,
 } from '../services/Entries';
 
 const useEntries = () => { 
@@ -17,10 +18,11 @@ const useEntries = () => {
                 setEntries(data);
             };
             loadEntries();
-        },[]),
+        },[entries]),
     ); 
+    //console.log('hook entries', entries);
 
-    return [entries, addEntry];
+    return [entries, addEntry, updateEntry];
 };
 
 export default useEntries;

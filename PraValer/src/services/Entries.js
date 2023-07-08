@@ -39,6 +39,7 @@ data = {
 await firestore()
 .collection('entries')
 .add(data);
+Alert.alert('Produto adicionado.');
 } catch (error) {
     console.error(
         'addEntry :: error on save object: ',
@@ -50,3 +51,34 @@ await firestore()
 }
 return data;
 };
+
+export const updateEntry = async entry => {
+  const userAuth = await getUserAuth();
+
+  console.log('service entry update', entry);
+
+let data = {};
+
+try {
+  data = {
+  quantidade: entry.quantidade,
+    descricao: entry.descricao,
+    preco: entry.preco,
+    userId: userAuth,
+  };
+// eu só coloquei o objeto, falta mandar ele pro banco
+await firestore()
+.collection('entries')
+.doc(entry.id) 
+.update(data);
+Alert.alert('Produto atualizado.');
+
+} catch (error) {
+  console.log(
+    'update erro', error
+  )
+  Alert.alert('Erro', 'Houve um erro ao atualizar esse lançamento.');
+}
+
+return data; 
+}
