@@ -1,5 +1,6 @@
  import React,{useState} from 'react'
 import { Text, View, TextInput, StyleSheet } from 'react-native'
+import InputMoney from '../Core/InputMoney'
 
 const FormItem = ({
   quantidade,
@@ -45,18 +46,10 @@ const FormItem = ({
    />                    
         </View>
         <View style={styles.containerPreco}>
-        <TextInput
-      style={styles.inputPreco}
-      placeholder='Preço'
-      placeholderTextColor={'#555459'}
-      keyboardType='number-pad'
-      autoCapitalize='none'
-      autoCorrect={false}
-      value={preco}
-      onChangeText={text => {
-        setPreco(text);
-      }}
-   />
+        <InputMoney
+        value={preco}
+        onChangeValue={setPreco}
+          />
         </View>
         
       </View>
@@ -83,7 +76,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
   } ,
   containerDescricao: {
-    width: '70%',
+    width: '50%',
   },
 
   inputDescricao: {
@@ -96,7 +89,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
   } ,
   containerPreco: {
-    width: '15%',
+    width: '30%',
   },
   inputPreco: {
     borderWidth: 1,

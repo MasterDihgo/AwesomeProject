@@ -6,6 +6,8 @@ import FormItem from '../../components/FormItem'
 
 import useEntries from '../../hooks/useEntries'
 
+import Currency from '../../components/Core/Currency'
+
 const Main = ({navigation}) => {
 
 const [entries, addEntry, updateEntry] = useEntries();
@@ -28,15 +30,15 @@ onSave = (item) => {
   };
 
 
-  const dataUp = {
+ /* const dataUp = {
     preco: item.preco,
     quantidade: item.quantidade,
     descricao: item.descricao,
     id: item.id,
   }
-  console.log('dataup', dataUp);
+  console.log('dataup', dataUp);*/
 
-  //{isEdit  ? () => updateEntry(dataUp) && setIsEdit(false) : () => addEntry(data);}
+  addEntry(data)
 
   setQuantidade('');
   setDescricao('');
@@ -99,6 +101,7 @@ const DATA= [ //DATA = OBJETO
         //renderItem={({item}) => <Item title={item.titulo} />}
 
         renderItem={({item}) => (
+          <>
           <View style={styles.container}>
             <TouchableOpacity
             onPress={() => {
@@ -109,14 +112,20 @@ const DATA= [ //DATA = OBJETO
               setId(item.id);
               setIsEdit(true);
 
-              onSave(item);
+             // onSave(item);
 
             }}
             >
-            <Text style={styles.item}> Quantidade: {item.quantidade} - Item: {item.descricao} - Preço: {item.preco}</Text>
+            <Text style={styles.item}> Quantidade: {item.quantidade} - Item: {item.descricao} </Text>
             </TouchableOpacity>
-            
+
+            <View>
+            <Text>
+              <Currency value={item.preco} />
+            </Text>
             </View>
+            </View>
+            </>
         )}
         
         />
@@ -146,6 +155,7 @@ const DATA= [ //DATA = OBJETO
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexDirection: 'row',
     //marginTop: StatusBar.currentHeight || 0,
   },
   item: {
