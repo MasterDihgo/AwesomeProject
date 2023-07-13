@@ -139,6 +139,13 @@ const DATA= [ //DATA = OBJETO
         </TouchableOpacity >
 
         <TouchableOpacity
+        style={styles.salvar}
+        onPress={() => navigation.navigate('Historico')} >
+        <Text>Histórico</Text>
+        </TouchableOpacity >
+
+
+        <TouchableOpacity
         style={styles.sair}
         onPress={() => {botao()}} >
         <Text> Sair</Text>

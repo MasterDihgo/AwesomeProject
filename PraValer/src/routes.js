@@ -7,6 +7,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 const Stack = createNativeStackNavigator();
 
 import Main from './pages/Main';
+import Historico from './pages/Historico';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 
@@ -17,6 +18,7 @@ const AppScreens = () => {
         initialRouteName={'SignIn'}
         >
             <Stack.Screen name='Main' component={Main} />
+            <Stack.Screen name='Historico' component={Historico} />
             <Stack.Screen name='SignIn' component={SignIn} />
             <Stack.Screen name='SignUp' component={SignUp} />
         </Stack.Navigator>
