@@ -2,21 +2,42 @@ import React, {useState} from 'react';
 import {View, Text, TouchableOpacity, Modal, StyleSheet} from 'react-native';
 import HistoryList from '../../components/HistoryList';
 
+import moment from '../../vendors/moment';
+
 import DateTimePicker from 'react-native-modal-datetime-picker';
 
+import useEntriesDate from '../../hooks/useEntriesDate';
+
 const Historico = () => {
+
+ 
+
     const [modal, setModal] = useState(false);
 
     const [modalVisible, setModalVisible] = useState(false);
+    const [modalVisible2, setModalVisible2] = useState(false);
 
-    const [value, setValue] = useState('');
+    const [value, setValue] = useState(new Date());
+
+    const [dataEnd, setDataEnd] = useState(new Date());
+
+    const [useEntriesDate] = useEntriesDate(value, dataEnd);
 
     const onChangeValue = date => {
         setValue(date);
         onCancel();
       };
+
+      const onChangeValue2 = date => {
+        setDataEnd(date);
+        onCancel2();
+      }
       const onCancel = () => {
         setModalVisible(false);
+      };
+
+      const onCancel2 = () => {
+        setModalVisible2(false);
       };
 
     return (
@@ -39,7 +60,13 @@ const Historico = () => {
 <TouchableOpacity
         style={styles.button}
         onPress={() => setModalVisible(true)}>
-        <Text>Data : {value} </Text>
+        <Text>Data inicial : {moment(value).format('L')} </Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => setModalVisible2(true)}>
+        <Text>Data final : {moment(dataEnd).format('L')} </Text>
       </TouchableOpacity>
 
         <DateTimePicker
@@ -52,6 +79,18 @@ const Historico = () => {
         isVisible={modalVisible}
         onConfirm={onChangeValue}
         onCancel={onCancel}
+      />
+
+<DateTimePicker
+        mode="date"
+        datePickerModeAndroid="calendar"
+        titleIOS="Data de vencimento"
+        cancelTextIOS="Cancelar"
+        confirmTextIOS="Ok"
+        date={dataEnd}
+        isVisible={modalVisible2}
+        onConfirm={onChangeValue2}
+        onCancel={onCancel2}
       />
 
               <TouchableOpacity  onPress={() =>{

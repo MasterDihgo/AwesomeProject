@@ -4,6 +4,21 @@ import firestore from "@react-native-firebase/firestore";
 
 import { getUserAuth } from './Auth';
 
+export const getEntriesDate = async () => {
+  const userAuth = await getUserAuth();
+  let querySnapshot;
+
+  querySnapshot = await firestore()
+  .collection('entries')
+  .where('userId', '==', userAuth)
+  .orderBy('entryAt')
+  .get();
+
+
+
+
+}
+
 export const getEntries = async () => {
     const userAuth = await getUserAuth();
     let querySnapshot;
