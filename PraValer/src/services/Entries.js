@@ -4,7 +4,8 @@ import firestore from "@react-native-firebase/firestore";
 
 import { getUserAuth } from './Auth';
 
-export const getEntriesDate = async () => {
+export const getEntriesDate = async (data1, data2) => {
+  console.log('service data', data1, data2);
   const userAuth = await getUserAuth();
   let querySnapshot;
 
@@ -12,7 +13,16 @@ export const getEntriesDate = async () => {
   .collection('entries')
   .where('userId', '==', userAuth)
   .orderBy('entryAt')
+  .startAt(data1)
+  .endAt(data2)
   .get();
+
+  let entriesDate = querySnapshot.docs.map(documentSnapshot => 
+    {
+    return {...documentSnapshot.data(), id: documentSnapshot.id};
+  }); // isso são funções javascript que tratam a resposta do banco de dados e montam o json com os dados e com o id.
+
+  return entriesDate;
 
 
 

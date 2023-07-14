@@ -7,14 +7,14 @@ import {
 
 } from '../services/Entries';
 
-const useEntriesDate = ({data1, data2}) => { 
+const useEntriesDate = (data1, data2) => { 
     console.log('useData', data1, data2);
     const [entriesDate, setEntriesDate] = useState([]);
 
     useFocusEffect(
         useCallback(() => {
             const loadEntries = async () => {
-                const data = await getEntriesDate();
+                const data = await getEntriesDate(data1, data2);
                 setEntriesDate(data);
             };
             loadEntries();

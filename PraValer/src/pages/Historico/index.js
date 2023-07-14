@@ -21,7 +21,9 @@ const Historico = () => {
 
     const [dataEnd, setDataEnd] = useState(new Date());
 
-    const [useEntriesDate] = useEntriesDate(value, dataEnd);
+    const [entriesDate] = useEntriesDate(value, dataEnd);
+
+    console.log('entriesDate', entriesDate);
 
     const onChangeValue = date => {
         setValue(date);
@@ -43,7 +45,10 @@ const Historico = () => {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Histórico</Text>
-            <HistoryList />
+            <HistoryList 
+            entries={entriesDate}
+            
+            />
             <View style={styles.actionContainer}      > 
             <TouchableOpacity
               style={styles.actionButton}

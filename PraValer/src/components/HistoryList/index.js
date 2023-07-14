@@ -3,14 +3,8 @@ import {FlatList} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import HistoryListItem from './HistoryListItem';
 
-const HistoryList = () => {
-    const entries = [
-        {
-            quantidade: 2,
-            description: 'sorvetes',
-            amount: 10,
-        },
-    ]
+const HistoryList = ({entries}) => {
+    
     return (
         <FlatList 
         data={entries}
