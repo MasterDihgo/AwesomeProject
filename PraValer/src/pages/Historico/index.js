@@ -8,7 +8,7 @@ import DateTimePicker from 'react-native-modal-datetime-picker';
 
 import useEntriesDate from '../../hooks/useEntriesDate';
 
-const Historico = () => {
+const Historico = ({navigation}) => {
 
  
 
@@ -49,6 +49,13 @@ const Historico = () => {
             entries={entriesDate}
             
             />
+
+            <View>
+              <Text>Datas escolhidas:</Text>
+              <Text>Data inicial : {moment(value).format('L')} </Text>
+              <Text>Data final : {moment(dataEnd).format('L')} </Text>
+
+            </View>
             <View style={styles.actionContainer}      > 
             <TouchableOpacity
               style={styles.actionButton}
@@ -98,12 +105,27 @@ const Historico = () => {
         onCancel={onCancel2}
       />
 
+
+
+
+
+
+
               <TouchableOpacity  onPress={() =>{
                 setModal(false);
               }}>
                 <Text >Cancelar</Text>
               </TouchableOpacity>
         </Modal>
+
+
+
+
+        <TouchableOpacity
+        onPress={() => navigation.navigate('Main')}
+        >
+          <Text>Tela principal</Text>
+        </TouchableOpacity>
         </View>
     )
 }

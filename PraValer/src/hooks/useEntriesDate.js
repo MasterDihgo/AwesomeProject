@@ -20,7 +20,7 @@ const useEntriesDate = (data1, data2) => {
             loadEntries();
         },[entriesDate]),
     ); 
-    //console.log('hook entries', entries);
+    console.log('hook entriesDate', entriesDate);
 
     return [entriesDate];
 };

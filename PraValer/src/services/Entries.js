@@ -14,7 +14,7 @@ export const getEntriesDate = async (data1, data2) => {
   .where('userId', '==', userAuth)
   .orderBy('entryAt')
   .startAt(data1)
-  .endAt(data2)
+  //.endAt(data2)
   .get();
 
   let entriesDate = querySnapshot.docs.map(documentSnapshot => 
@@ -22,7 +22,31 @@ export const getEntriesDate = async (data1, data2) => {
     return {...documentSnapshot.data(), id: documentSnapshot.id};
   }); // isso são funções javascript que tratam a resposta do banco de dados e montam o json com os dados e com o id.
 
-  return entriesDate;
+  const origem = [];
+
+for (var i = 0; i < entriesDate.length ; i++) {
+  console.log('nuget', entriesDate[4].entryAt, 'data2', data2);
+  console.log('nuget', 'data2', data2);
+if (entriesDate[i].entryAt < data2) {
+  const data = {
+    descricao: entriesDate[i].descricao,
+    quantidade: entriesDate[i].quantidade,
+    preco: entriesDate[i].preco,
+    entryAt: entriesDate[1].entryAt,
+   // precoTotal: produtos[i].precoTotal,
+    
+    userId: userAuth,
+   } ;
+
+   origem.push(data);
+}
+
+}
+
+
+console.log('origem', origem);
+
+  return origem;
 
 
 

@@ -6,12 +6,12 @@ const HistoryListItem = ({entry}) => {
 return (
     <View style={styles.container}>
         <View style={styles.description}>
-          <Text style={styles.descriptionText}>{entry.quantidade}{entry.description}</Text>
+          <Text style={styles.descriptionText}>{entry.quantidade} - {entry.descricao}</Text>
           </View>
 
           <View style={styles.amount}>
           <Text style={styles.amountText}>
-            <Currency value={entry.amount} />
+            <Currency value={entry.preco} />
           </Text>
         </View>
         </View>
@@ -23,8 +23,12 @@ const styles = StyleSheet.create({
       flex: 1,
       flexDirection: 'row',
     },
+    description: {
+      flex: 1,
+    },
 
     descriptionText: {
+    
         fontSize: 14,
         //color: Colors.white,
       },
