@@ -26,14 +26,14 @@ export const getEntriesDate = async (data1, data2) => {
 
 for (var i = 0; i < entriesDate.length ; i++) {
   console.log('nuget', entriesDate[4].entryAt, 'data2', data2);
-  console.log('nuget', 'data2', data2);
+  console.log('nuget', 'data2', data2); // console so do data2
 if (entriesDate[i].entryAt < data2) {
   const data = {
     descricao: entriesDate[i].descricao,
     quantidade: entriesDate[i].quantidade,
     preco: entriesDate[i].preco,
     entryAt: entriesDate[1].entryAt,
-   // precoTotal: produtos[i].precoTotal,
+   // precoTotal: produtos[i].precoTotal, 
     
     userId: userAuth,
    } ;
