@@ -8,9 +8,14 @@ import useEntries from '../../hooks/useEntries'
 
 import Currency from '../../components/Core/Currency'
 
+import DisplayTotal from '../../components/Core/DisplayTotal'
+
+import useBalance from '../../hooks/useBalance'
+
 const Main = ({navigation}) => {
 
 const [entries, addEntry, updateEntry] = useEntries();
+const [balance] = useBalance();
 
 // console.log('main entries', entries);
 
@@ -104,6 +109,7 @@ const DATA= [ //DATA = OBJETO
           <>
           <View style={styles.container}>
             <TouchableOpacity
+            style={styles.item}
             onPress={() => {
               setQuantidade(item.quantidade);
               console.log('item.quantidade', item.quantidade, 'quantidade', quantidade); 
@@ -119,8 +125,8 @@ const DATA= [ //DATA = OBJETO
             <Text style={styles.item}> Quantidade: {item.quantidade} - Item: {item.descricao} </Text>
             </TouchableOpacity>
 
-            <View>
-            <Text>
+            <View style={styles.preco} >
+            <Text style={styles.itemPreco}>
               <Currency value={item.preco} />
             </Text>
             </View>
@@ -129,6 +135,8 @@ const DATA= [ //DATA = OBJETO
         )}
         
         />
+
+        <DisplayTotal currentBalance={balance}/>
 
         <View style={styles.containerBotoes}>
 
@@ -163,16 +171,32 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'row',
+    backgroundColor: '#cecece',
     //marginTop: StatusBar.currentHeight || 0,
   },
   item: {
-    backgroundColor: '#f9c2ff',
-    padding: 10,
-    marginVertical: 8,
-    marginHorizontal: 16,
+   // backgroundColor: '#f9c2ff',
+   flex: 1,
+    padding: 1,
+    marginVertical: 2,
+    marginHorizontal: 2,
+    backgroundColor:'#dddddd',
+    //backgroundColor: 'red',
+  },
+  itemPreco: {
+    padding: 1,
+    marginVertical: 2,
+    marginHorizontal: 2,
+    backgroundColor:'#dddddd',
+  },
+  preco: {
+    justifyContent:'center',
+    alignItems: 'center',
+    //
   },
   title: {
     fontSize: 32,
+   
   },
 
   containerBotoes: {

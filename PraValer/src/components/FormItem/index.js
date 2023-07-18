@@ -19,7 +19,7 @@ const FormItem = ({
 <View style={styles.containerQuantidade}>
    <TextInput
       style={styles.inputQuant}
-      placeholder='Quantidade'
+      placeholder='Quant.'
       placeholderTextColor={'#555459'}
       keyboardType='number-pad'
       autoCapitalize='none'
@@ -74,6 +74,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     height: 44,
     marginTop: 20,
+    //backgroundColor: 'red',
   } ,
   containerDescricao: {
     width: '50%',

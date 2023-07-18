@@ -13,11 +13,11 @@ export const getBalance = async () => {
     querySnapshot = await firestore()
     .collection('entries')
     .where('userId', '==', userAuth)
-    .orderBy('preco')
+    .orderBy('precoTotal')
     .get()
 
     return _(querySnapshot.docs).reduce((total, doc) => {
-        return total + doc.data().preco;
+        return total + doc.data().precoTotal;
         }, 0);
         
 

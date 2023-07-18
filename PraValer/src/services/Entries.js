@@ -75,12 +75,14 @@ export const addEntry = async entry => {
 
     let data = {}; //aqui estamos criando o objeto que sera enviado para o banco de dados.
     // estou comentando para vc ter referencias futuras.
+    let precoTotal = parseFloat(entry.quantidade) * entry.preco;
     
 try {
 data = {
     quantidade: entry.quantidade,
     descricao: entry.descricao,
     preco: entry.preco,
+    precoTotal: precoTotal,
     entryAt: entry.entryAt || new Date(), // a função new date grava a data atual.
     userId: userAuth,
 }; // o objeto data, que antes estava vazio, agora foi preenchido s propriedades fornecidas pelo formulário e algumas de controle, como data atual e identificação do usuário.
@@ -105,6 +107,7 @@ export const updateEntry = async entry => {
   const userAuth = await getUserAuth();
 
   console.log('service entry update', entry);
+let precoTotal = parseFloat(entry.quantidade) * entry.preco;
 
 let data = {};
 
@@ -113,6 +116,7 @@ try {
   quantidade: entry.quantidade,
     descricao: entry.descricao,
     preco: entry.preco,
+    precoTotal: precoTotal,
     userId: userAuth,
   };
 // eu só coloquei o objeto, falta mandar ele pro banco
