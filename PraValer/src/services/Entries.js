@@ -135,3 +135,19 @@ Alert.alert('Produto atualizado.');
 
 return data; 
 }
+
+export const deleteProduto = async produto => {
+  console.log('delete produto', produto);
+  try {
+    await firestore()
+    .collection('entries')
+    .doc(produto.id)
+    .delete();
+    Alert.alert('Produto apagado');
+  } catch (error) {
+
+  } console.log(
+    'update erro', error
+  )
+  Alert.alert('Erro', 'Houve um erro ao apagar esse lançamento.');
+};

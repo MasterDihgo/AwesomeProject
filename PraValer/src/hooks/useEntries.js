@@ -6,6 +6,7 @@ import {
     getEntries,
     addEntry,
     updateEntry,
+    deleteProduto,
 } from '../services/Entries';
 
 const useEntries = () => { 
@@ -22,7 +23,7 @@ const useEntries = () => {
     ); 
     //console.log('hook entries', entries);
 
-    return [entries, addEntry, updateEntry];
+    return [entries, addEntry, updateEntry, deleteProduto];
 };
 
 export default useEntries;

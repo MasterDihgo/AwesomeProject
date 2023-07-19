@@ -5,7 +5,8 @@ import {
     getBalance
 } from '../services/Balance';
 
-const useBalance = () => {
+const useBalance = (atualizar) => {
+    console.log('entrei no hook atualizar', atualizar);
     const [balance, setBalance] = useState();
 
     useFocusEffect(
@@ -15,7 +16,7 @@ const useBalance = () => {
             setBalance(value);
         };
         loadBalance();
-        },[]), //fim do useCallBack
+        },[balance]), //fim do useCallBack
 
             ); // fim do useFoccusEffect
             return [balance];

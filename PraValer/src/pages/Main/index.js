@@ -1,6 +1,6 @@
 
 import React, {useState} from 'react'
-import {StyleSheet, Text, View, TouchableOpacity, FlatList } from 'react-native'
+import {Alert, StyleSheet, Text, View, TouchableOpacity, FlatList } from 'react-native'
 
 import FormItem from '../../components/FormItem'
 
@@ -13,8 +13,10 @@ import DisplayTotal from '../../components/Core/DisplayTotal'
 import useBalance from '../../hooks/useBalance'
 
 const Main = ({navigation}) => {
+  const [atualizar, setAtualizar] = useState(true);
+  console.log('criei o state atualizar', atualizar);
 
-const [entries, addEntry, updateEntry] = useEntries();
+const [entries, addEntry, updateEntry, deleteProduto] = useEntries(atualizar);
 const [balance] = useBalance();
 
 // console.log('main entries', entries);
@@ -25,6 +27,11 @@ const [preco, setPreco] = useState('');
 const [id, setId] = useState('');
 
 const [isEdit, setIsEdit] = useState(false);
+
+const onAtualizar = () => {
+  console.log('entrei no alutalizar', atualizar);
+  atualizar? setAtualizar(false) : setAtualizar(true);
+}
 
 onSave = (item) => {
   console.log('item', item);
@@ -43,11 +50,37 @@ onSave = (item) => {
   }
   console.log('dataup', dataUp);*/
 
-  addEntry(data)
+ {isEdit? updateEntry(data) : addEntry(data) } 
+
+  
 
   setQuantidade('');
   setDescricao('');
   setPreco('');
+
+  navigation.navigate('Sucesso');
+
+}
+
+const deletar = () => {
+  const data = {
+    preco: preco,
+    quantidade: quantidade,
+    descricao: descricao,
+    id: id,
+  };
+   Alert.alert(
+    'Apagar?' ,
+    'Voce deseja apagar?',
+    [
+      {text: 'não', style: 'destructive'},
+      {text: 'sim', onPress: () => {
+        deleteProduto(data)
+        
+      }}
+    ],
+    {cancelable: false}
+   )
 }
 
     const botao = () => {
@@ -145,6 +178,14 @@ const DATA= [ //DATA = OBJETO
         onPress={() => {onSave()}} >
         <Text>{isEdit ? `Atualizar` : `Salvar`}</Text>
         </TouchableOpacity >
+
+     {isEdit && (
+        <TouchableOpacity
+        style={styles.salvar}
+        onPress={() => {deletar()}} >
+        <Text>{ `Deletar` }</Text>
+        </TouchableOpacity >
+      )}
 
         <TouchableOpacity
         style={styles.salvar}

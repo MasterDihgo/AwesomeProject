@@ -8,6 +8,7 @@ const Stack = createNativeStackNavigator();
 
 import Main from './pages/Main';
 import Historico from './pages/Historico';
+import Sucesso from './pages/Sucesso';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 
@@ -19,6 +20,7 @@ const AppScreens = () => {
         >
             <Stack.Screen name='Main' component={Main} />
             <Stack.Screen name='Historico' component={Historico} />
+            <Stack.Screen name='Sucesso' component={Sucesso} />
             <Stack.Screen name='SignIn' component={SignIn} />
             <Stack.Screen name='SignUp' component={SignUp} />
         </Stack.Navigator>
