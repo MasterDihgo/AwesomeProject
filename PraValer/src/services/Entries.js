@@ -4,9 +4,15 @@ import firestore from "@react-native-firebase/firestore";
 
 import { getUserAuth } from './Auth';
 
+import moment from '../vendors/moment';
+
 export const getEntriesDate = async (data1, data2) => {
   console.log('service data', data1, data2);
   const userAuth = await getUserAuth();
+  const dataFrom = moment(data1).format('L');
+  const dataEnd = moment(data2).format('L');
+  console.log('service data dataFrom', dataFrom);
+  console.log('service data dataEnd', dataEnd);
   let querySnapshot;
 
   querySnapshot = await firestore()
@@ -23,11 +29,13 @@ export const getEntriesDate = async (data1, data2) => {
   }); // isso são funções javascript que tratam a resposta do banco de dados e montam o json com os dados e com o id.
 
   const origem = [];
-
+ // console.log('nuget', moment(entriesDate[4].entryAt.toDate()).format('L'))
+ // console.log('descricao item 4',entriesDate[4].descricao);
 for (var i = 0; i < entriesDate.length ; i++) {
-  console.log('nuget', entriesDate[4].entryAt, 'data2', data2);
-  console.log('nuget', 'data2', data2); // console so do data2
-if (entriesDate[i].entryAt < data2) {
+  console.log('item', moment(entriesDate[i].entryAt.toDate()).format('L'));
+  console.log('descricao item ',entriesDate[i].descricao);
+  //console.log('nuget', 'data2', data2); // console so do data2
+if (moment(entriesDate[i].entryAt.toDate()).format('L') < dataEnd) {
   const data = {
     descricao: entriesDate[i].descricao,
     quantidade: entriesDate[i].quantidade,

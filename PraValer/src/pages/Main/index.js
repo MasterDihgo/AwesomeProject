@@ -14,7 +14,7 @@ import useBalance from '../../hooks/useBalance'
 
 const Main = ({navigation}) => {
   const [atualizar, setAtualizar] = useState(true);
-  console.log('criei o state atualizar', atualizar);
+ // console.log('criei o state atualizar', atualizar);
 
 const [entries, addEntry, updateEntry, deleteProduto] = useEntries(atualizar);
 const [balance] = useBalance();
@@ -39,6 +39,7 @@ onSave = (item) => {
     preco: preco,
     quantidade: quantidade,
     descricao: descricao,
+    id: id,
   };
 
 
@@ -50,17 +51,18 @@ onSave = (item) => {
   }
   console.log('dataup', dataUp);*/
 
- {isEdit? updateEntry(data) : addEntry(data) } 
+ isEdit ? updateEntry(data) : addEntry(data);
 
   
 
   setQuantidade('');
   setDescricao('');
   setPreco('');
+  setIsEdit(false);
 
   navigation.navigate('Sucesso');
 
-}
+};
 
 const deletar = () => {
   const data = {
@@ -75,7 +77,12 @@ const deletar = () => {
     [
       {text: 'não', style: 'destructive'},
       {text: 'sim', onPress: () => {
-        deleteProduto(data)
+        deleteProduto(data);
+        setQuantidade('');
+        setDescricao('');
+        setPreco('');
+        setIsEdit(false);
+        navigation.navigate('Sucesso');
         
       }}
     ],

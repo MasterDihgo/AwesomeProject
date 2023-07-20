@@ -6,7 +6,7 @@ import {
 } from '../services/Balance';
 
 const useBalance = (atualizar) => {
-    console.log('entrei no hook atualizar', atualizar);
+    //console.log('entrei no hook atualizar', atualizar);
     const [balance, setBalance] = useState();
 
     useFocusEffect(
