@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     descriptionText: {
     
         fontSize: 14,
-        //color: Colors.white,
+      
       },
       details: {
         flexDirection: 'row',
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
       amountText: {
         fontSize: 14,
         fontWeight: 'bold',
-        //color: Colors.white,
+        
       },
     });
 

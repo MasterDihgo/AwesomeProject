@@ -21,7 +21,7 @@ const useEntries = () => {
             loadEntries();
         },[entries]),
     ); 
-    //console.log('hook entries', entries);
+
 
     return [entries, addEntry, updateEntry, deleteProduto];
 };

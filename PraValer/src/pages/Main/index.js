@@ -13,13 +13,12 @@ import DisplayTotal from '../../components/Core/DisplayTotal'
 import useBalance from '../../hooks/useBalance'
 
 const Main = ({navigation}) => {
-  const [atualizar, setAtualizar] = useState(true);
- // console.log('criei o state atualizar', atualizar);
+  
+ 
 
-const [entries, addEntry, updateEntry, deleteProduto] = useEntries(atualizar);
+const [entries, addEntry, updateEntry, deleteProduto] = useEntries();
 const [balance] = useBalance();
 
-// console.log('main entries', entries);
 
 const [quantidade, setQuantidade] = useState('');
 const [descricao, setDescricao] = useState('');
@@ -28,10 +27,8 @@ const [id, setId] = useState('');
 
 const [isEdit, setIsEdit] = useState(false);
 
-const onAtualizar = () => {
-  console.log('entrei no alutalizar', atualizar);
-  atualizar? setAtualizar(false) : setAtualizar(true);
-}
+
+
 
 onSave = (item) => {
   console.log('item', item);
@@ -43,13 +40,6 @@ onSave = (item) => {
   };
 
 
- /* const dataUp = {
-    preco: item.preco,
-    quantidade: item.quantidade,
-    descricao: item.descricao,
-    id: item.id,
-  }
-  console.log('dataup', dataUp);*/
 
  isEdit ? updateEntry(data) : addEntry(data);
 
@@ -98,28 +88,6 @@ const deletar = () => {
     })
     }
 
-
-
-const DATA= [ //DATA = OBJETO
-    {
-      id: '1',
-      titulo: 'Feijão',
-      quantidade: 2,
-      },
-    {
-      id: '2',
-      titulo: 'Arroz 5kg',
-      quantidade: 1,
-    },
-    {
-      id: '3',
-      titulo: 'Miojo',
-      quantidade: 5,
-    },
-  ] // OBJETO JSON
-
-
-// console.log('DATA',DATA) // Este vê o log (no console) do JSON
   
     return (
       <>
@@ -143,7 +111,7 @@ const DATA= [ //DATA = OBJETO
         data={entries}
         keyExtractor={item => item.id}
 
-        //renderItem={({item}) => <Item title={item.titulo} />}
+        
 
         renderItem={({item}) => (
           <>
@@ -152,13 +120,13 @@ const DATA= [ //DATA = OBJETO
             style={styles.item}
             onPress={() => {
               setQuantidade(item.quantidade);
-              console.log('item.quantidade', item.quantidade, 'quantidade', quantidade); 
+              
               setDescricao(item.descricao);
               setPreco(item.preco);
               setId(item.id);
               setIsEdit(true);
 
-             // onSave(item);
+             
 
             }}
             >
@@ -220,16 +188,16 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     backgroundColor: '#cecece',
-    //marginTop: StatusBar.currentHeight || 0,
+   
   },
   item: {
-   // backgroundColor: '#f9c2ff',
+  
    flex: 1,
     padding: 1,
     marginVertical: 2,
     marginHorizontal: 2,
     backgroundColor:'#dddddd',
-    //backgroundColor: 'red',
+   
   },
   itemPreco: {
     padding: 1,

@@ -5,8 +5,7 @@ import { Alert, Text, View, TextInput, KeyboardAvoidingView, StyleSheet, Touchab
 import {signIn as login } from '../../services/Auth';
 
 const SignIn = ({navigation}) => {
-  const [email, setEmail] = useState('');
-  console.log('email', email);
+  const [email, setEmail] = useState(''); 
 
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -71,7 +70,7 @@ const SignIn = ({navigation}) => {
             style={styles.input}
             placeholder='Insira a seha'
             placeholderTextColor={'#555459'} //carbon
-           // keyboardType=''
+           
            secureTextEntry
             autoCapitalize='none'
             autoCorrect={false}

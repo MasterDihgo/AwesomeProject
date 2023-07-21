@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     height: 44,
     marginTop: 20,
-    //backgroundColor: 'red',
+    
   } ,
   containerDescricao: {
     width: '50%',

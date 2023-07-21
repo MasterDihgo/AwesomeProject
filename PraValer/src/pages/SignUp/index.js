@@ -27,7 +27,7 @@ const SignUp = ({navigation}) => {
         name,
        } )
 
-       console.log('register', registerSuccess);
+       
 
       if (registerSuccess === true) {
         navigation.reset({
@@ -84,7 +84,7 @@ const SignUp = ({navigation}) => {
             style={styles.input}
             placeholder='Sua Senha'
             placeholderTextColor={'#555459'} //carbon
-            //keyboardType='email-address'
+            
             secureTextEntry
             autoCapitalize='none'
             autoCorrect={false}

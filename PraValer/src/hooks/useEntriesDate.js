@@ -8,7 +8,7 @@ import {
 } from '../services/Entries';
 
 const useEntriesDate = (data1, data2) => { 
-    console.log('useData', data1, data2);
+    
     const [entriesDate, setEntriesDate] = useState([]);
 
     useFocusEffect(
@@ -20,7 +20,7 @@ const useEntriesDate = (data1, data2) => {
             loadEntries();
         },[entriesDate]),
     ); 
-    console.log('hook entriesDate', entriesDate);
+    
 
     return [entriesDate];
 };

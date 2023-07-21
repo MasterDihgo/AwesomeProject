@@ -17,7 +17,7 @@ export const cleanUserAuth = async () => {
 };
 
 export const signUp = async (data) => {
-    console.log('service signup data', data);
+    
     const {email, password, name} = data;
     try {
         const userInfos = await auth().createUserWithEmailAndPassword(
@@ -42,17 +42,10 @@ export const signUp = async (data) => {
     }
 }
 
-/*export function signIn(data){
-    const {email, password} = data;
-    const userInfos = auth().signInWithEmailAndPassword(email,password)
-     console.log('userInfos', userInfos);
-     //setUserAuth(userInfos.user.uid);
 
-     return {loginSuccess: true};
-}*/
 
 export const signIn = async (data) => {
-    console.log('sign in service data', data);
+    
     const {email, password} = data;
 
     try {
@@ -63,14 +56,14 @@ export const signIn = async (data) => {
             password,
         );
 
-        console.log('userInfos', userInfos);
+        
 
         setUserAuth(userInfos.user.uid);
 
         return {loginSuccess: true};
     } catch (e) {
         Alert.alert('Erro ao tentar entrar');
-        console.log('signIn :: e: ', JSON.stringify(e.message));
+        
         return {loginSuccess: false}
     }
 } 

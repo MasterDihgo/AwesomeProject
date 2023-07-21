@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         paddingHorizontal: 5,
         paddingVertical: 3,
-       // fontSize: 20,
+       
         height: 44,
         backgroundColor: '#dddddd', //branco
     },

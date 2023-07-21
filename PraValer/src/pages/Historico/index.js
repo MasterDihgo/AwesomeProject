@@ -23,7 +23,6 @@ const Historico = ({navigation}) => {
 
     const [entriesDate] = useEntriesDate(value, dataEnd);
 
-    console.log('entriesDate', entriesDate);
 
     const onChangeValue = date => {
         setValue(date);
@@ -67,7 +66,13 @@ const Historico = ({navigation}) => {
             </TouchableOpacity>
         </View>
 
+
+
+
+
         <Modal animationType="slide" transparent={false} visible={modal}>
+
+          <View style={styles.containerModal}>
 
 <TouchableOpacity
         style={styles.button}
@@ -105,17 +110,28 @@ const Historico = ({navigation}) => {
         onCancel={onCancel2}
       />
 
-
-
-
-
-
-
+              <View style={styles.botoesdofiltro}>
+                <View style={styles.botaoConfirmar}>
               <TouchableOpacity  onPress={() =>{
+                setModal(false);
+              }}>
+                <Text >Confirmar</Text>
+              </TouchableOpacity>
+              </View>
+              <TouchableOpacity  onPress={() =>{
+
+                setValue(new Date());
+                setDataEnd(new Date());
+
                 setModal(false);
               }}>
                 <Text >Cancelar</Text>
               </TouchableOpacity>
+              </View>
+
+
+              </View>
+
         </Modal>
 
 
@@ -132,7 +148,6 @@ const Historico = ({navigation}) => {
 
 const styles = StyleSheet.create({
     container: {
-      //backgroundColor: Colors.asphalt,
       borderRadius: 5,
       borderStyle: 'solid',
       borderWidth: 1,
@@ -140,9 +155,14 @@ const styles = StyleSheet.create({
       margin: 5,
       padding: 8,
     },
+
+    containerModal: {
+    
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
     title: {
       fontSize: 12,
-      //color: Colors.white,
       marginBottom: 5,
     },
     actionContainer: {
@@ -151,20 +171,24 @@ const styles = StyleSheet.create({
     actionLabel: {
       flex: 1,
       fontSize: 12,
-     // color: Colors.white,
     },
     actionButton: {
       flexDirection: 'row',
     },
     actionButtonIcon: {
-     // color: Colors.white,
       marginTop: 3,
       marginRight: 2,
     },
     actionButtonText: {
       fontSize: 12,
-     // color: Colors.white,
     },
+
+    botoesdofiltro: {
+      flexDirection: 'row',
+    },
+    botaoConfirmar: {
+      marginRight: 20,
+    }
   });
 
   export default Historico;
